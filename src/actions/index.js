@@ -10,3 +10,7 @@ export const savingCanvas = save  => ({
   type: types.SAVE_CANVAS,
   save
 });
+export const imageStamp = imageObject =>({
+  type: types.IMAGE_STAMP,
+  imageObject
+});

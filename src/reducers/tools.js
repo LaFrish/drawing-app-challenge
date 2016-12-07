@@ -1,4 +1,4 @@
-import { SELECT_TOOL, CHANGE_SIZE, CHANGE_COLOR, RESET_CANVAS, SAVE_CANVAS } from "../constants/ActionTypes";
+import { SELECT_TOOL, CHANGE_SIZE, CHANGE_COLOR, RESET_CANVAS, SAVE_CANVAS, IMAGE_STAMP } from "../constants/ActionTypes";
 import { BRUSH } from "../constants/Tools";
 
 const initialState = {
@@ -28,6 +28,10 @@ export default function tools(state = initialState, action) {
 		case SAVE_CANVAS:
 		return Object.assign({}, state, {
 			saveCanvas: action.save
+		})
+		case IMAGE_STAMP:
+		return Object.assign({}, state, {
+			image_stamp: action.imageObject
 		})
 
 		default:

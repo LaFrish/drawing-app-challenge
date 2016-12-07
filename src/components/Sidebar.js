@@ -4,6 +4,7 @@ import BrushSize from "./BrushSize";
 import BrushColor from "./BrushColor";
 import ResetCanvas from "./ResetCanvas";
 import SaveCanvas from "./SaveCanvas";
+import ImageStamp from "./ImageStamp";
 
 export default class Sidebar extends Component {
 	render() {
@@ -12,6 +13,7 @@ export default class Sidebar extends Component {
 		const { brush_color } = tools;
 		const { resetCanvas } = tools;
 		const { saveCanvas } = tools;
+		const { imageStamp } = tools;
 		return (
 			<div className="sidebar">
 				<section className="section section--tool-selector">
@@ -34,6 +36,13 @@ export default class Sidebar extends Component {
 					<BrushColor
 						brush_color={ brush_color }
 						action={ actions.changeColor }
+						/>
+				</section>
+				<section className="section section--image-stamp">
+					<h3 className="section__heading">IMAGE STAMP</h3>
+					<ImageStamp
+						imageStamp={ imageStamp }
+						action={ actions.imageStamp }
 						/>
 				</section>
 				<section className="section--reset-canvas">
