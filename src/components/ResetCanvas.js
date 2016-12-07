@@ -1,9 +1,7 @@
 import React, { PropTypes, Component} from 'react';
-import { connect } from 'react-redux';
-import { resetCanvas } from '../actions/index';
 
 
-let ctx;
+
 export default class ResetCanvas extends Component {
 	constructor(props) {
 		super(props);
