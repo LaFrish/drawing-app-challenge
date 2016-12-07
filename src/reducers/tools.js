@@ -1,4 +1,4 @@
-import { SELECT_TOOL, CHANGE_SIZE, CHANGE_COLOR } from "../constants/ActionTypes";
+import { SELECT_TOOL, CHANGE_SIZE, CHANGE_COLOR, RESET_CANVAS, SAVE_CANVAS } from "../constants/ActionTypes";
 import { BRUSH } from "../constants/Tools";
 
 const initialState = {
@@ -10,19 +10,27 @@ const initialState = {
 export default function tools(state = initialState, action) {
 	switch (action.type) {
 		case CHANGE_SIZE:
-			return Object.assign({}, state, {
-				brush_size: action.text
-			})
-			case CHANGE_COLOR:
-				return Object.assign({}, state, {
-					brush_color: action.color
-				})
+		return Object.assign({}, state, {
+			brush_size: action.text
+		})
+		case CHANGE_COLOR:
+		return Object.assign({}, state, {
+			brush_color: action.color
+		})
 		case SELECT_TOOL:
-			return Object.assign({}, state, {
-				tool: action.text
-			})
+		return Object.assign({}, state, {
+			tool: action.text
+		})
+		case RESET_CANVAS:
+		return Object.assign({}, state, {
+			canvas: initialState.canvas
+		})
+		case SAVE_CANVAS:
+		return Object.assign({}, state, {
+			saveCanvas: action.save
+		})
 
 		default:
-			return state
+		return state
 	}
 }
