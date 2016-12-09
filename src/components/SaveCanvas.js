@@ -1,7 +1,5 @@
 import React, { PropTypes, Component  } from "react";
-// import { connect } from 'react-redux';
 import { saveCanvas } from '../actions/index';
-// import Canvas from "../components/Canvas";
 
 export default class SaveCanvas extends Component {
 	constructor(props, context) {
@@ -22,7 +20,7 @@ export default class SaveCanvas extends Component {
 					id="save-select"
 					value={saveCanvas}
 					checked={saveCanvas === true}
-					onClick={this.saveCanvas} >UPLOAD</button>
+					onClick={this.saveCanvas}>UPLOAD</button>
 				</div>
 			);
 		}

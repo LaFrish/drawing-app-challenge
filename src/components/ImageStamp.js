@@ -1,15 +1,16 @@
 import React, { Component, PropTypes  } from 'react';
 import { connect } from 'react-redux';
-import { image_stamp } from '../actions/index';
+import { imageStamp } from '../actions/index';
 
 
 class ImageStamp extends Component {
-  constructor(props, handleImageUpload) {
-    super(props, handleImageUpload);
+  constructor(props, context) {
+    super(props, context);
     this.state = {file: '',imagePreviewUrl: 'http://i.imgur.com/RecH1bT.png'};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.types = ['image/png', 'image/jpg', 'image/gif', 'image/jpeg'];
+    // this.image_stamp = this.image_stamp.bind(this);
   }
 
   handleSubmit(e) {
@@ -31,6 +32,14 @@ class ImageStamp extends Component {
 
     reader.readAsDataURL(file)
   }
+
+  // imageStamp(event){
+  //   event.preventDefault();
+  //   const canvas = document.querySelector('canvas');
+  //   const imageURL = reader.readAsDataURL(file);
+  //   const stamp
+  // }
+
   render(){
     let {imagePreviewUrl} = this.state;
 
@@ -39,7 +48,7 @@ class ImageStamp extends Component {
         <input
           type="file"
           className="fileInput"
-          defaultValue={image_stamp}
+          defaultValue={imageStamp}
           onChange={(e)=>this.handleImageUpload(e)} />
 
         <div className="imgPreview">
@@ -51,15 +60,16 @@ class ImageStamp extends Component {
 }
 
 ImageStamp.propTypes = {
-  image_stamp: PropTypes.string.isRequired,
-  handleImageUpload: PropTypes.func.isRequired
+  imageStamp: PropTypes.string.isRequired,
+  action: PropTypes.func.isRequired
+
 };
 const mapStateToProps = (state) => ({
-  tool: state.eraser,
+  image: state.image,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  action: (tool) => dispatch(image_stamp(tool)),
+  action: (image) => dispatch(imageStamp(image)),
 });
 
 const ImageStampContainer = connect(

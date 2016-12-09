@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from "react";
-import { BRUSH, ERASER } from "../constants/Tools";
+import { BRUSH, ERASER, STAMP } from "../constants/Tools";
+// import {selected} from "../ToolSelector"
 
 let ctx;
 
@@ -7,9 +8,13 @@ export default class Canvas extends Component {
 	constructor(props) {
 		super(props);
 		this.isDrawing = false;
+		this.isErasing = false;
+		this.isStamping = false;
 		this.start = this.start.bind(this);
 		this.end = this.end.bind(this);
 		this.draw = this.draw.bind(this);
+		this.erase = this.erase.bind(this);
+		// this.stamp = this.stamp.bind(this);
 	}
 
 	componentDidMount() {
@@ -44,6 +49,30 @@ export default class Canvas extends Component {
 		}
 	}
 
+	// getErased(event){
+	// 	if (this.props.tools.tool === ERASER ){
+	// 		this.isDrawing = false;
+	// 		event.preventDefault();
+	// 		ctx.lineWidth = this.getStroke();
+	// 		ctx.strokeStyle = '#ffffff';
+	// 		ctx.stroke();
+	// 	}
+	// }
+
+
+// 	eraser(event){
+// 		if (this.props.tool.index === ERASER ){
+// 			this.isErasing = true;
+// 			ctx.lineTo(this.getX(event), this.getY(event));
+// 			ctx.lineWidth = this.getStroke();
+// 			ctx.strokeStyle = '#ffffff';
+// 			ctx.beginPath();
+// 			ctx.moveTo(this.getX(event), this.getY(event));
+// 			ctx.globalCompositeOperation="destination-out";
+// event.preventDefault();
+// 		}
+// 	}
+
 	start(event) {
 		if (this.props.tools.tool === BRUSH || this.props.tools.tool === ERASER) {
 			this.isDrawing = true;
@@ -55,9 +84,15 @@ export default class Canvas extends Component {
 
 	draw(event) {
 		if (this.isDrawing) {
+			if (this.props.tools.tool === ERASER){
+				ctx.strokeStyle = "#ffffff"
+			}
+			else{
+				ctx.strokeStyle = this.getColor();
+			}
 			ctx.lineTo(this.getX(event), this.getY(event));
 			ctx.lineWidth = this.getStroke();
-			ctx.strokeStyle = this.getColor();
+
 			ctx.lineCap = "round";
 			ctx.lineJoin = "round";
 			ctx.stroke();
@@ -73,6 +108,78 @@ export default class Canvas extends Component {
 		}
 		event.preventDefault();
 	}
+	erase(getX, getY) {
+	  if (this.props.tools.tool === ERASER) {
+	    ctx.beginPath();
+	    ctx.moveTo(this.getX(event), this.getY(event));
+	    // start = true;
+	  	ctx.lineTo(this.getX(event), this.getY(event));
+	    ctx.strokeStyle = 'white';
+	    ctx.lineWidth = this.getStroke();
+	    ctx.stroke();
+	  }
+	}
+	stamp(event){
+		if (this.props.tool.value === STAMP )
+		{
+			this.isDrawing = false;
+			this.isStamping = true;
+			this.isErasing = false;
+			var canvas = document.getElementById("drawingBoard");
+			var ctx = canvas.getContext("2d");
+			var img = document.getElementById("imgSource");
+			ctx.drawImage(img, this.getX(event), this.getY(event));
+			var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+			ctx.putImageData(imgData, 0, 0);
+			event.preventDefault();
+		}
+	}
+
+	// toolMode(event){
+	// 	if (this.props.tool === BRUSH){
+	// 		return
+	// 		console.log("BRUSH")
+	// 	}
+	// 	else if (this.props.tool === STAMP){
+	// 		return
+	// 		console.log("STAMP")
+	// 	}
+	// 	else if (this.props.tool === ERASER){
+	// 		return
+	// 		document.getElementById('color').value;
+	// 		ctx.strokeStyle = '#fff';
+	// 		console.log("ERASER")
+	// 	}
+	// }
+
+	//
+	// 	tool(event) {
+	//
+	//
+	//   if (selected === "stamp") {
+	//     ctx.fillStyle = randomColor();
+	//     ctx.fillRect(getX, getY, size, size);
+	//   }
+	//   else if (selected === "erase") {
+	//     ctx.clearRect(getX, getY, size, size);
+	//   }
+	//   else if (selected === "color") {
+	//     ctx.fillStyle = document.getElementById('color').value;
+	//     ctx.fillRect(getX, getY, size, size);
+	//   }
+	// }
+	//
+
+	//  erasing() {
+	//   selected = "erase";
+	// }
+	//
+	//  drawing() {
+	//   selected = "draw";
+	// }
+	// stamping(){
+	// 	selected = "stamp"
+	// }
 
 	render() {
 		return (
@@ -82,7 +189,8 @@ export default class Canvas extends Component {
 				onMouseDown={ this.start }
 				onMouseUp={ this.end }
 				onMouseMove={ this.draw }
-			></canvas>
+				onClick={ this.erase}
+				></canvas>
 		)
 	}
 }

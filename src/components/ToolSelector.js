@@ -5,6 +5,38 @@ import { bindActionCreators } from "redux";
 import { selectTool } from '../actions/index';
 import { onToolSelect } from '../actions/index';
 
+// export default
+function ToolSelector(props) {
+	const { action, tool } = props;
+	return (
+		<div>
+			<div className="radio">
+				<input type="radio" name="tool" id="brush-select"
+					value={BRUSH}
+					checked={tool === BRUSH}
+					onChange={ (e) => { action(e.target.value) } } />
+				<label htmlFor="brush-select">Brush</label>
+			</div>
+
+			<div className="radio">
+				<input type="radio" name="tool" id="stamp-select"
+					value={STAMP}
+					checked={tool === STAMP}
+					onChange={ (e) => { action(e.target.value) } } />
+				<label htmlFor="stamp-select">Stamp</label>
+			</div>
+
+			<div className="radio">
+				<input type="radio" name="tool" id="eraser-select"
+					value={ERASER}
+					checked={tool === ERASER}
+					onChange={ (e) => { action(e.target.value) } } />
+				<label htmlFor="eraser-select">Eraser</label>
+			</div>
+		</div>
+	);
+}
+
 var tools = [
 	{
 		id:1,
@@ -25,11 +57,13 @@ var tools = [
 		name: "ERASER",
 		title: "ERASER",
 		value: "ERASER",
-		index: "3"
+		index: "3",
+		brush_color: "#ffffff"
+
 	}
 ];
 
-class ToolSelector extends React.Component {
+class ToolSelect extends React.Component {
 	constructor(props) {
 		super(props);
 		this.onSelect = this.onSelect.bind(this);
@@ -42,10 +76,26 @@ class ToolSelector extends React.Component {
 			selectedTool: index
 		});
 	}
+
+	// onErase(event){
+	// 	this.setState({
+	// 		selectedTool: ERASER
+	// 	});
+	// }
+	// onBrush(event){
+	// 	this.setState({
+	// 		selectedTool: BRUSH
+	// 	});
+	// }
+	// onStamp(event){
+	// 	this.setState({
+	// 		selectedTool: STAMP
+	// 	});
+	// }
 	render() {
 		return <div>
 			<div
-				className="status">
+				className="activeTool">
 				Selected Tool: { this.state.selectedTool }
 			</div>
 			<Toggle
@@ -59,8 +109,8 @@ class ToolSelector extends React.Component {
 class ToggleTool extends React.Component {
 	onSelect = () => this.props.onSelect(this.props.tool.index);
 	render() {
-		let className = this.props.selected ? "toggle-tool toggle-tool--selected" : "toggle-tool";
-		return <span className={ className } onClick={ this.onSelect }>{ this.props.tool.title }</span>;
+		let className = this.props.selected ? `${this.props.tool.name} active` : `${this.props.tool.name} inactive`;
+		return <button className={ className } onClick={ this.onSelect }>{ this.props.tool.title }</button>;
 		}
 	}
 
@@ -76,16 +126,28 @@ class ToggleTool extends React.Component {
 			}
 
 
-ToolSelector.propTypes = {
-	tool: PropTypes.string.isRequired,
-	action: PropTypes.func.isRequired
-};
-const mapStateToProps = state => ({
-	tools: state.tools
-})
+			ToolSelector.propTypes = {
+				tool: PropTypes.oneOf(['BRUSH', 'STAMP', 'ERASER']).isRequired,
+				action: PropTypes.func.isRequired,
+				// onBrush: PropTypes.shape({
+				// 	brush_size: PropTypes.number.isRequired,
+				// 	brush_color: PropTypes.string.isRequired
+				// }).isRequired,
+				// onErase: PropTypes.shape({
+				// 	brush_size: PropTypes.number.isRequired,
+				// 	brush_color: PropTypes.string.isRequired
+				// }).isRequired,
+				// onStamp: PropTypes.shape({
+				// 	image_stamp: PropTypes.string.isRequired,
+				// }).isRequired
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ selectTool, onToolSelect }, dispatch);
-}
+			};
+			const mapStateToProps = state => ({
+				tools: state.tools
+			})
 
-export default connect(mapStateToProps, mapDispatchToProps)(ToolSelector);
+			function mapDispatchToProps(dispatch) {
+				return bindActionCreators({ selectTool, onToolSelect }, dispatch);
+			}
+
+			export default connect(mapStateToProps, mapDispatchToProps)(ToolSelector);
