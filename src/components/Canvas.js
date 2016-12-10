@@ -101,12 +101,12 @@ export default class Canvas extends Component {
 			this.isDrawing = false;
 			this.isStamping = true;
 			this.isErasing = false;
-			var canvas = document.getElementById("drawingBoard");
-			// var ctx = canvas.getContext("2d");
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
 			var img = document.getElementById("imgSource");
 			ctx.drawImage(img, this.getX(event), this.getY(event));
 			var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-			// ctx.putImageData(imgData, 0, 0);
+			ctx.putImageData(imgData, 0, 0);
 			event.preventDefault();
 		}
 	}
@@ -116,6 +116,7 @@ export default class Canvas extends Component {
 			<canvas
 				className="canvas"
 				ref="canvas"
+				id="canvas"
 				onMouseDown={ this.start }
 				onMouseUp={ this.end }
 				onMouseMove={ this.draw }

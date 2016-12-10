@@ -26,10 +26,10 @@ export default function tools(state = initialState, action) {
 		return Object.assign({}, state, {
 			tool: action.tool,
 		})
-		// case STAMP:
-		// return Object.assign({}, state, {
-		// 	tool: action.tool,
-		// })
+		case STAMP:
+		return Object.assign({}, state, {
+			tool: action.tool,
+		})
 		case CHANGE_SIZE:
 		return Object.assign({}, state, {
 			brush_size: action.text
