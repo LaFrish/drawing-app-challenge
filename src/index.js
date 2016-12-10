@@ -5,7 +5,9 @@ import { Provider } from "react-redux";
 import App from "./containers/App";
 import reducer from "./reducers";
 
-const store = createStore(reducer);
+
+const store = createStore(reducer, window.devToolsExtension && window.devToolsExtension());
+console.log(store.getState());
 
 render(
 	<Provider store={store}>
