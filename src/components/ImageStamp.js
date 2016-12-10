@@ -29,21 +29,18 @@ export default class ImageStamp extends Component {
     reader.readAsDataURL(file)
   }
 
-
   render(){
     let {imagePreviewUrl} = this.state;
 
     return (
       <div className="image-container">
-<label htmlFor="stamp-select" className="fileButton">
-        <input
-          type="file"
-
-          className="fileInput"
-          defaultValue={imageStamp}
-          onChange={(e)=>this.handleImageUpload(e)} />
-
-        <span>UPLOAD IMAGE</span>  
+        <label className="fileButton">
+          <input
+            type="file"
+            className="fileInput"
+            defaultValue={imageStamp}
+            onChange={(e)=>this.handleImageUpload(e)} />
+          <span>UPLOAD IMAGE</span>
         </label>
 
         <div className="imgPreview">
