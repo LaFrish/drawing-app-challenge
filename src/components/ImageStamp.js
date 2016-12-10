@@ -45,11 +45,14 @@ class ImageStamp extends Component {
 
     return (
       <div>
+        <label className="fileButton">
         <input
           type="file"
           className="fileInput"
           defaultValue={imageStamp}
           onChange={(e)=>this.handleImageUpload(e)} />
+        <span>UPLOAD IMAGE</span>
+        </label>
 
         <div className="imgPreview">
           <img id="imgSource" height="150" src={imagePreviewUrl} alt=''/>

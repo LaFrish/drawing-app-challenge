@@ -10,23 +10,130 @@
 	width: 100vw;
 	font-weight: 300;
 	overflow: hidden;
+
 }
 .canvas {
 	height: 100vh;
 	width: 100vw;
 }
 .sidebar {
+	padding: 10px;
 	position: fixed;
 	top:0;
 	right: 0;
 	height: 100vh;
+	width: 15%;
 	background-color: #CB5599;
-	/*background-color: #263238;*/
+	color: #263238;
+	/*color: #4A4A4A;*/
 }
-.section {
+/*.section {
 	min-height: 100px;
 	width: 100%;
-	color: white;
+}*/
+
+h3.section__heading{
+	color: #263238;
+	text-transform: capitalize;
+	margin-bottom: 5px;
 }
 
-/* Candidate defined styles go here! */
+.section--tool-selector {
+	border-bottom: 2px solid #263238;
+
+}
+.section--tool-selector div{
+	/*background: #fff;*/
+	display: inline-flex;
+vertical-align: middle;
+
+}
+
+.section--brush-size{
+	border-bottom: 2px solid #263238;
+}
+
+
+.section--brush-color{
+	border-bottom: 2px solid #263238;
+}
+
+.section--image-stamp{
+	border-bottom: 2px solid #263238;
+}
+
+.section--reset-canvas{
+	border-bottom: 2px solid #263238;
+}
+.section--save-canvas{
+	border-bottom: 2px solid #263238;
+}
+
+
+/*//////////BUTTONS//////////*/
+
+input[type="file" i]{
+	display: none;
+}
+
+.fileButton,
+button,
+input[type="button" i] {
+	border: 2px solid #D4D4D4;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 10px;
+	font-weight: bolder;
+	padding: 5px 14px 5px 14px;
+	margin-right: 3px;
+	margin-bottom: 20px;
+	text-decoration: none;
+
+
+	display: inline-block;
+	color: #4A4A4A;
+	background-color: #A5A5A5;
+
+	background: -webkit-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
+	background: -moz-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
+	background: -ms-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
+	background: -o-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
+}
+
+.fileButton:hover,
+button:hover,
+input:hover,
+nput[type="file" i]:hover,
+input[type="button" i]:hover {
+	border: 1px solid #D4D4D4;
+	background: #A5A5A5;
+	background: -webkit-linear-gradient(90deg, #A5A5A5 10%, #868686 100%);
+	background: -moz-linear-gradient(90deg, #A5A5A5 10%, #868686 100%);
+	background: -ms-linear-gradient(90deg, #A5A5A5 10%, #868686 100%);
+	background: -o-linear-gradient(90deg, #A5A5A5 10%, #868686 100%);
+}
+
+input:active,
+input[type="button" i]:checked {
+	background: #9E9E9E;
+	background: -webkit-linear-gradient(90deg, #9E9E9E 10%, #F5F5F5 100%);
+	background: -moz-linear-gradient(90deg, #9E9E9E 10%, #F5F5F5 100%);
+	background: -ms-linear-gradient(90deg, #9E9E9E 10%, #F5F5F5 100%);
+	background: -o-linear-gradient(90deg, #9E9E9E 10%, #F5F5F5 100%);
+}
+
+.imgSource img{
+	margin-top: 10px;
+  width:100px;
+  height:100px;
+  margin:5px;
+	margin-bottom: 20px;
+}
+.color-input{
+	width: 50px;
+	margin-bottom: 20px;
+}
+input[type="color"]{
+	width: 130px;
+}
