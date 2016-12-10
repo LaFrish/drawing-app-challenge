@@ -2,6 +2,7 @@
   "name": "vm-apprentice-challege",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://lafrish.github.io/drawing-app-challenge/",
   "devDependencies": {
     "enzyme": "^2.4.1",
     "react-addons-test-utils": "^15.3.0",

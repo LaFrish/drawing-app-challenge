@@ -35,13 +35,15 @@ export default class ImageStamp extends Component {
 
     return (
       <div className="image-container">
-        <label className="fileButton">
+<label htmlFor="stamp-select" className="fileButton">
         <input
           type="file"
+
           className="fileInput"
           defaultValue={imageStamp}
           onChange={(e)=>this.handleImageUpload(e)} />
-        <span>UPLOAD IMAGE</span>
+
+        <span>UPLOAD IMAGE</span>  
         </label>
 
         <div className="imgPreview">
