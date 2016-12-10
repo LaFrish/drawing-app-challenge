@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from "react";
 import { BRUSH, ERASER, STAMP } from "../constants/Tools";
 
-
 let ctx;
 
 export default class Canvas extends Component {
