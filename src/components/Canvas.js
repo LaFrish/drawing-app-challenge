@@ -14,7 +14,7 @@ export default class Canvas extends Component {
 		this.end = this.end.bind(this);
 		this.draw = this.draw.bind(this);
 		this.erase = this.erase.bind(this);
-		// this.stamp = this.stamp.bind(this);
+		this.stamp = this.stamp.bind(this);
 	}
 
 	componentDidMount() {
@@ -60,18 +60,18 @@ export default class Canvas extends Component {
 	// }
 
 
-// 	eraser(event){
-// 		if (this.props.tool.index === ERASER ){
-// 			this.isErasing = true;
-// 			ctx.lineTo(this.getX(event), this.getY(event));
-// 			ctx.lineWidth = this.getStroke();
-// 			ctx.strokeStyle = '#ffffff';
-// 			ctx.beginPath();
-// 			ctx.moveTo(this.getX(event), this.getY(event));
-// 			ctx.globalCompositeOperation="destination-out";
-// event.preventDefault();
-// 		}
-// 	}
+	// 	eraser(event){
+	// 		if (this.props.tool.index === ERASER ){
+	// 			this.isErasing = true;
+	// 			ctx.lineTo(this.getX(event), this.getY(event));
+	// 			ctx.lineWidth = this.getStroke();
+	// 			ctx.strokeStyle = '#ffffff';
+	// 			ctx.beginPath();
+	// 			ctx.moveTo(this.getX(event), this.getY(event));
+	// 			ctx.globalCompositeOperation="destination-out";
+	// event.preventDefault();
+	// 		}
+	// 	}
 
 	start(event) {
 		if (this.props.tools.tool === BRUSH || this.props.tools.tool === ERASER) {
@@ -109,77 +109,32 @@ export default class Canvas extends Component {
 		event.preventDefault();
 	}
 	erase(getX, getY) {
-	  if (this.props.tools.tool === ERASER) {
-	    ctx.beginPath();
-	    ctx.moveTo(this.getX(event), this.getY(event));
-	    // start = true;
-	  	ctx.lineTo(this.getX(event), this.getY(event));
-	    ctx.strokeStyle = 'white';
-	    ctx.lineWidth = this.getStroke();
-	    ctx.stroke();
-	  }
+		if (this.props.tools.tool === ERASER) {
+			ctx.beginPath();
+			ctx.moveTo(this.getX(event), this.getY(event));
+			// start = true;
+			ctx.lineTo(this.getX(event), this.getY(event));
+			ctx.strokeStyle = 'white';
+			ctx.lineWidth = this.getStroke();
+			ctx.stroke();
+		}
 	}
+
 	stamp(event){
-		if (this.props.tool.value === STAMP )
+		if (this.props.tools.tool === STAMP )
 		{
 			this.isDrawing = false;
 			this.isStamping = true;
 			this.isErasing = false;
 			var canvas = document.getElementById("drawingBoard");
-			var ctx = canvas.getContext("2d");
+			// var ctx = canvas.getContext("2d");
 			var img = document.getElementById("imgSource");
 			ctx.drawImage(img, this.getX(event), this.getY(event));
 			var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-			ctx.putImageData(imgData, 0, 0);
+			// ctx.putImageData(imgData, 0, 0);
 			event.preventDefault();
 		}
 	}
-
-	// toolMode(event){
-	// 	if (this.props.tool === BRUSH){
-	// 		return
-	// 		console.log("BRUSH")
-	// 	}
-	// 	else if (this.props.tool === STAMP){
-	// 		return
-	// 		console.log("STAMP")
-	// 	}
-	// 	else if (this.props.tool === ERASER){
-	// 		return
-	// 		document.getElementById('color').value;
-	// 		ctx.strokeStyle = '#fff';
-	// 		console.log("ERASER")
-	// 	}
-	// }
-
-	//
-	// 	tool(event) {
-	//
-	//
-	//   if (selected === "stamp") {
-	//     ctx.fillStyle = randomColor();
-	//     ctx.fillRect(getX, getY, size, size);
-	//   }
-	//   else if (selected === "erase") {
-	//     ctx.clearRect(getX, getY, size, size);
-	//   }
-	//   else if (selected === "color") {
-	//     ctx.fillStyle = document.getElementById('color').value;
-	//     ctx.fillRect(getX, getY, size, size);
-	//   }
-	// }
-	//
-
-	//  erasing() {
-	//   selected = "erase";
-	// }
-	//
-	//  drawing() {
-	//   selected = "draw";
-	// }
-	// stamping(){
-	// 	selected = "stamp"
-	// }
 
 	render() {
 		return (
@@ -189,7 +144,7 @@ export default class Canvas extends Component {
 				onMouseDown={ this.start }
 				onMouseUp={ this.end }
 				onMouseMove={ this.draw }
-				onClick={ this.erase}
+				onClick={ this.stamp}
 				></canvas>
 		)
 	}

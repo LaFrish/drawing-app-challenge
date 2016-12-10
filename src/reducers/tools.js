@@ -4,7 +4,8 @@ import { BRUSH, ERASER, STAMP } from "../constants/Tools";
 const initialState = {
 	tool: BRUSH,
 	brush_size: "10",
-	brush_color: "transparent",
+	// brush_color: "transparent",
+	brush_color: "#000",
 	background_color: "#FFFFFF",
 	imageStamp: 'false',
 	saveCanvas: 'false',
