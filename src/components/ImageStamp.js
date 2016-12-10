@@ -1,16 +1,13 @@
 import React, { Component, PropTypes  } from 'react';
-import { connect } from 'react-redux';
 import { imageStamp } from '../actions/index';
 
-
-class ImageStamp extends Component {
+export default class ImageStamp extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {file: '',imagePreviewUrl: 'http://i.imgur.com/RecH1bT.png'};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.types = ['image/png', 'image/jpg', 'image/gif', 'image/jpeg'];
-    // this.image_stamp = this.image_stamp.bind(this);
   }
 
   handleSubmit(e) {
@@ -29,22 +26,15 @@ class ImageStamp extends Component {
         imagePreviewUrl: reader.result
       });
     }
-
     reader.readAsDataURL(file)
   }
 
-  // imageStamp(event){
-  //   event.preventDefault();
-  //   const canvas = document.querySelector('canvas');
-  //   const imageURL = reader.readAsDataURL(file);
-  //   const stamp
-  // }
 
   render(){
     let {imagePreviewUrl} = this.state;
 
     return (
-      <div>
+      <div className="image-container">
         <label className="fileButton">
         <input
           type="file"
@@ -55,7 +45,7 @@ class ImageStamp extends Component {
         </label>
 
         <div className="imgPreview">
-          <img id="imgSource" height="150" src={imagePreviewUrl} alt=''/>
+          <img id="imgSource" height="125" src={imagePreviewUrl} alt=''/>
         </div>
       </div>
     );
@@ -65,19 +55,4 @@ class ImageStamp extends Component {
 ImageStamp.propTypes = {
   imageStamp: PropTypes.string.isRequired,
   action: PropTypes.func.isRequired
-
 };
-const mapStateToProps = (state) => ({
-  image: state.image,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  action: (image) => dispatch(imageStamp(image)),
-});
-
-const ImageStampContainer = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(ImageStamp);
-
-export default ImageStampContainer;

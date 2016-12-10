@@ -1,17 +1,15 @@
-import { SELECT_TOOL, CHANGE_SIZE, CHANGE_COLOR, RESET_CANVAS, SAVE_CANVAS, IMAGE_STAMP, START, END } from "../constants/ActionTypes";
+import { SELECT_TOOL, CHANGE_SIZE, CHANGE_COLOR, RESET_CANVAS, SAVE_CANVAS, IMAGE_STAMP} from "../constants/ActionTypes";
 import { BRUSH, ERASER, STAMP } from "../constants/Tools";
 
 const initialState = {
 	tool: BRUSH,
 	brush_size: "10",
-	// brush_color: "transparent",
 	brush_color: "#000",
 	background_color: "#FFFFFF",
 	imageStamp: 'false',
 	saveCanvas: 'false',
 	resetCanvas: 'false',
 	isDrawing: false
-	// tools:[BRUSH, STAMP, ERASER]
 }
 
 export default function tools(state = initialState, action) {
@@ -50,15 +48,6 @@ export default function tools(state = initialState, action) {
 		return Object.assign({}, state, {
 			imageStamp: action.imageObject
 		})
-		case START:
-		return Object.assign({}, state, {
-			isDrawing: true
-		})
-		case END:
-		return Object.assign({}, state, {
-			isDrawing: false
-		})
-
 		default:
 		return state
 	}

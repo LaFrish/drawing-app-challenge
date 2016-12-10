@@ -1,8 +1,4 @@
 import React, { PropTypes, Component} from 'react';
-import { connect } from 'react-redux';
-import { resetCanvas } from '../actions/index';
-
-
 
 export default class ResetCanvas extends Component {
 	constructor(props) {
@@ -19,8 +15,8 @@ export default class ResetCanvas extends Component {
 	render() {
 
 		return (
-			<div id="clear">
-				<button
+			<div className="reset-container" >
+				<button id="reset-select"
 					onClick={ this.resetCanvas }
 					>RESET</button>
 			</div>

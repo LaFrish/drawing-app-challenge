@@ -3,17 +3,18 @@ import React, { PropTypes } from "react";
 export default function BrushColor(props) {
 	const { action, brush_color } = props;
 
-
 	return (
-		<input
-			id="color"
-			type="color"
-			className="color-input"
-			defaultValue={brush_color}
-			onChange={ (e) => {
-				action(e.target.value)
-			}}
-		/>
+		<div className="brush-size-container">
+			<input
+				id="color"
+				type="color"
+				className="color-input"
+				defaultValue={brush_color}
+				onChange={ (e) => {
+					action(e.target.value)
+				}}
+				/>
+		</div>
 	);
 }
 

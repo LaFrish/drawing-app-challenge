@@ -15,7 +15,7 @@ export default class SaveCanvas extends Component {
 	}
 	render(){
 		return (
-			<div>
+			<div className="save-container">
 				<button
 					id="save-select"
 					value={saveCanvas}
