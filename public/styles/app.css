@@ -20,7 +20,7 @@
 	top:0;
 	right: 0;
 	height: 100vh;
-	width: 16%;
+	width: 180px;
 	background-color: #CB5599;
 	/*color: #263238;*/
 	color: #4A4A4A;
@@ -30,6 +30,7 @@
 }
 
 h3.section__heading{
+	font-family: 'Open Sans', sans-serif;
 	color: #263238;
 	text-transform: uppercase;
 	margin-bottom: 5px;
@@ -38,8 +39,10 @@ h3.section__heading{
 	font-size: 16px;
 }
 
+/*TOOL SELECTOR SECTION*/
+
 .section--tool-selector {
-	border-bottom: 2px solid #263238;
+	border-bottom: 2px solid #4A4A4A;
 }
 
 .tool-container{
@@ -47,44 +50,27 @@ h3.section__heading{
 	display: inline-flex;
 	vertical-align: middle;
 	height: 40px;
+}
 
-}
-#brush-select{
-	width: 90%;
-	color: #263238;
-	letter-spacing: 1px;
-	text-align: center;
-}
-#stamp-select{
-	width: 90%;
-	color: #263238;
-	letter-spacing: 1px;
-	text-align: center;
-}
-#eraser-select{
-	width: 90%;
-	color: #263238;
-	letter-spacing: 1px;
-	text-align: center;
-}
 /*BRUSH SIZE SECTION*/
 .section--brush-size{
-	border-bottom: 2px solid #263238;
+	border-bottom: 2px solid #4A4A4A;
 }
 .brush-size-container{
 	padding-left: 10px;
-	margin-bottom: 5px;
+	margin-bottom: 15px;
 }
 input[type="number"]{
-	width: 90%;
+	width: 160px;
 	height: 20px;
 	font-weight: bold;
 	border: none;
+
 }
 
 /*BRUSH COLOR SECTION*/
 .section--brush-color{
-	border-bottom: 2px solid #263238;
+	border-bottom: 2px solid #4A4A4A;
 }
 .brush-color-container{
 	padding-left: 10px;
@@ -101,7 +87,7 @@ input[type="color"]{
 
 /*IMAGE UPLOAD SECTION*/
 .section--image-stamp{
-	border-bottom: 2px solid #263238;
+	border-bottom: 2px solid #4A4A4A;
 }
 .image-container{
 	padding-left: 10px;
@@ -109,20 +95,14 @@ input[type="color"]{
 }
 .fileButton span{
 	color: #263238;
-	letter-spacing: 1px;
+	letter-spacing: .5px;
+	font-weight: bolder;
 }
 
-/*.imgSource img{
-	margin-top: 10px;
-	width:100px;
-	height:100px;
-	margin:5px;
-	margin-bottom: 20px;
-}*/
 
 /*RESET SECTION*/
 .section--reset-canvas{
-	border-bottom: 2px solid #263238;
+	border-bottom: 2px solid #4A4A4A;
 }
 
 .reset-container{
@@ -131,11 +111,13 @@ input[type="color"]{
 }
 #reset-select{
 	color: #263238;
-	letter-spacing: 1px;
+	font-weight: bolder;
+	letter-spacing: .5px;
+	font-size: 10px;
 }
 /*SAVE SECTION*/
 .section--save-canvas{
-	border-bottom: 2px solid #263238;
+	border-bottom: 2px solid #4A4A4A;
 }
 .save-container{
 	padding-left: 10px;
@@ -143,18 +125,44 @@ input[type="color"]{
 }
 #save-select{
 	color: #263238;
-	letter-spacing: 1px;
+	font-weight: bolder;
+	letter-spacing: .5px;
+	font-size: 10px;
 }
 /*//////////BUTTONS//////////*/
 
+input[type="radio" i]{
+	display: none;
+}
+
 input[type="file" i]{
 	display: none;
+}
+input[type=radio] + label{
+	font-size: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	height: 27px;
+	display: inline-block;
+	background-color: #CCCCCC;
+	color: #4A4A4A;
+	border: 1px solid #D4D4D4;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: .4em .9em;
+	margin-right: 3px;
+	background-color: #A5A5A5;
+	background: -webkit-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
+	background: -moz-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
+	background: -ms-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
+	background: -o-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
 }
 
 .fileButton,
 button,
 input[type="button" i] {
-	border: 2px solid #D4D4D4;
+	border: 1px solid #D4D4D4;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -164,24 +172,23 @@ input[type="button" i] {
 	margin-right: 3px;
 	margin-bottom: 20px;
 	text-decoration: none;
-
 	display: inline-block;
 	color: #4A4A4A;
 	background-color: #A5A5A5;
-
 	background: -webkit-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
 	background: -moz-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
 	background: -ms-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
 	background: -o-linear-gradient(90deg, #868686 10%, #A5A5A5 100%);
 }
 
+
 .fileButton:hover,
 button:hover,
 input:hover,
-nput[type="file" i]:hover,
+input[type=radio] + label:hover,
+input[type="file" i]:hover,
 input[type="button" i]:hover {
-	/*border: 2px double #4A4A4A;*/
-	border: 2px solid #D4D4D4;
+	border: 2px double #4A4A4A;
 	background: #A5A5A5;
 	background: -webkit-linear-gradient(90deg, #A5A5A5 10%, #868686 100%);
 	background: -moz-linear-gradient(90deg, #A5A5A5 10%, #868686 100%);
@@ -191,12 +198,13 @@ input[type="button" i]:hover {
 
 .fileButton:active,
 input:active,
+input[type=radio]:checked + label,
 input[type="button" i]:checked {
-	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.9);
+	box-shadow: 0 0 0 2px rgba(74, 74, 74, 0.9);
 	border: 2px solid #D4D4D4;
 	background: #9E9E9E;
-	background: -webkit-linear-gradient(90deg, #9E9E9E 10%, #F5F5F5 100%);
-	background: -moz-linear-gradient(90deg, #9E9E9E 10%, #F5F5F5 100%);
-	background: -ms-linear-gradient(90deg, #9E9E9E 10%, #F5F5F5 100%);
-	background: -o-linear-gradient(90deg, #9E9E9E 10%, #F5F5F5 100%);
+	background: -webkit-linear-gradient(90deg, #9E9E9E 10%, #868686 100%);
+	background: -moz-linear-gradient(90deg, #9E9E9E 10%, #868686 100%);
+	background: -ms-linear-gradient(90deg, #9E9E9E 10%, #868686 100%);
+	background: -o-linear-gradient(90deg, #9E9E9E 10%, #868686 100%);
 }

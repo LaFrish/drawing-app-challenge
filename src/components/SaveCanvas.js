@@ -20,7 +20,7 @@ export default class SaveCanvas extends Component {
 					id="save-select"
 					value={saveCanvas}
 					checked={saveCanvas === true}
-					onClick={this.saveCanvas}>UPLOAD</button>
+					onClick={this.saveCanvas}>SAVE</button>
 				</div>
 			);
 		}

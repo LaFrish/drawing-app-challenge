@@ -1,12 +1,14 @@
 import React, { PropTypes, Component } from "react";
 import { BRUSH, ERASER, STAMP } from "../constants/Tools";
 
+
 let ctx;
 
 export default class Canvas extends Component {
 	constructor(props) {
 		super(props);
 		this.isDrawing = false;
+		this.isErasing = false;
 		this.isStamping = false;
 		this.start = this.start.bind(this);
 		this.end = this.end.bind(this);
@@ -66,6 +68,7 @@ export default class Canvas extends Component {
 			}
 			ctx.lineTo(this.getX(event), this.getY(event));
 			ctx.lineWidth = this.getStroke();
+
 			ctx.lineCap = "round";
 			ctx.lineJoin = "round";
 			ctx.stroke();
@@ -85,6 +88,7 @@ export default class Canvas extends Component {
 		if (this.props.tools.tool === ERASER) {
 			ctx.beginPath();
 			ctx.moveTo(this.getX(event), this.getY(event));
+			// start = true;
 			ctx.lineTo(this.getX(event), this.getY(event));
 			ctx.strokeStyle = 'white';
 			ctx.lineWidth = this.getStroke();
@@ -97,10 +101,13 @@ export default class Canvas extends Component {
 		{
 			this.isDrawing = false;
 			this.isStamping = true;
+			this.isErasing = false;
 			var canvas = document.getElementById("drawingBoard");
+			// var ctx = canvas.getContext("2d");
 			var img = document.getElementById("imgSource");
 			ctx.drawImage(img, this.getX(event), this.getY(event));
 			var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+			// ctx.putImageData(imgData, 0, 0);
 			event.preventDefault();
 		}
 	}
