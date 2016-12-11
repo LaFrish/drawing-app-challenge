@@ -19,16 +19,10 @@ npm start
 * Eraser Mode
 * Reset Canvas
 * Save Canvas
-
+---
 ## Finished Product!
+
 ![](./public/img/app.png)
-
-<details>
-<summary><strong>My reaction</strong></summary>
-
-  >     ![](./happyDance.gif)
-
-</details>
 
 ---
 
