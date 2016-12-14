@@ -1,6 +1,40 @@
 # Social Tables Front End Intern Challenge
 
-## To Start
-### `npm install`
-### `npm start`
-### Open [http://localhost:3000](http://localhost:3000)
+## Instructions
+
+```bash
+git clone git@github.com:LaFrish/drawing-app-challenge.git
+cd drawing-app-challenge
+npm install
+npm start
+```
+##Open [http://localhost:3000](http://localhost:3000)
+---
+
+## Challenge walkthrough
+
+<strong>Drawing App Capabilities</strong>
+* Paint Mode
+* Image Stamp Mode
+* Eraser Mode
+* Reset Canvas
+* Save Canvas
+
+## Finished Product!
+![](./public/img/app.png)
+
+<details>
+<summary><strong>My reaction</strong></summary>
+
+  >     ![](./happyDance.gif)
+
+</details>
+
+---
+
+## Sites
+
+* [Portfolio](http://lafrish.github.io/)
+* [Resume](https://drive.google.com/open?id=0B9BDSYdQ3pr8eGxDbzB5SVVKLUdyWWJONHJpTGFBYkpGdFR3)
+* [LinkedIn](https://www.linkedin.com/in/farishtahaider)
+* [GitHub Repo](https://github.com/LaFrish)

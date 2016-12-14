@@ -5,13 +5,16 @@
   "homepage": "https://lafrish.github.io/drawing-app-challenge/",
   "devDependencies": {
     "enzyme": "^2.4.1",
+    "mocha": "3.2.0",
     "react-addons-test-utils": "^15.3.0",
-    "react-scripts": "^0.6.0"
+    "react-scripts": "^0.6.0",
+    "webpack": "1.14.0"
   },
   "dependencies": {
     "chai": "3.5.0",
     "classnames": "^2.2.5",
     "expect": "1.20.2",
+    "mocha": "3.2.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
@@ -19,6 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "test": "chai"
   }
 }
